@@ -1,13 +1,27 @@
 import MenuItem from './MenuItem';
 
-function MenuList({ foodItems }) {
-    console.log(foodItems);
+interface FoodItem {
+    id: number;
+    itemName: string;
+    price: number;
+    isFavorite: boolean;
+    foodImage: string;
+    description: string;
+}
+interface MenuListProps {
+    foodItems: FoodItem[];
+}
 
+
+function MenuList({ foodItems }: MenuListProps) {
     return (
-        <>
-            {/* render a MenuItem component for each element of the foodItems array */}
-        </>
+        <ul>
+            {foodItems.map((foodItem) => (
+                <MenuItem key={foodItem.id} {...foodItem} />
+            ))}
+        </ul>
     );
 }
+
 
 export default MenuList;
